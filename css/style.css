@@ -1,0 +1,625 @@
+:root {
+  --primary: #0b1d3a;
+  --secondary: #e63946;
+  --accent: #00d4ff;
+  --bg-dark: #0b0f1a;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --glass: rgba(255, 255, 255, 0.08);
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, #1a2a6c, #0b0f1a);
+  color: white;
+  margin: 0;
+}
+
+header {
+  text-align: center;
+  padding: 30px 20px;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  background: linear-gradient(90deg, #00d4ff, #ffffff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+header p {
+  color: #ccc;
+}
+
+/* SECTIONS */
+section {
+  margin: 30px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 غروبات بسطر */
+  gap: 20px;
+  padding: 0 40px; /* 👈 حواف من الطرفين */
+}
+
+.group-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 15px; /* 👈 أصغر */
+  font-size: 0.9rem; /* 👈 تصغير عام */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transition: 0.3s;
+}
+
+.group-card:hover {
+  transform: translateY(-5px);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  table-layout: fixed;
+  font-size: 0.85rem;
+}
+
+th {
+  color: var(--accent);
+  font-weight: bold;
+}
+th:nth-child(1),
+td:nth-child(1) {
+  width: 60%; /* 👈 اسم الفريق */
+  text-align: left;
+}
+
+th:nth-child(2),
+td:nth-child(2),
+th:nth-child(3),
+td:nth-child(3) {
+  width: 20%; /* 👈 Points + GD */
+  text-align: center;
+}
+
+td {
+  padding: 8px 5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* MATCHES */
+.match-input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--glass);
+  padding: 12px;
+  border-radius: 12px;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.match-input:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.match-input span {
+  font-weight: 600;
+}
+
+input[type="number"] {
+  width: 40px;
+  height: 30px;
+  border-radius: 10px;
+  border: none;
+  background: #f8f8f8;
+  color: rgb(0, 0, 0);
+  font-size: 0.9rem;
+  text-align: center;
+  transition: 0.2s;
+}
+
+input[type="number"]:focus {
+  outline: 2px solid var(--accent);
+}
+button {
+  display: block;
+  margin: 30px auto;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--secondary), #ff6b6b);
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+button:disabled {
+  background: gray;
+}
+
+#knockout-bracket {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+#knockout-bracket div {
+  background: white;
+  color: black;
+  padding: 15px;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: bold;
+}
+#champion-podium {
+  position: relative;
+  background: radial-gradient(circle, #ffd700, #ff8c00);
+  border-radius: 30px;
+  padding: 50px;
+  overflow: hidden;
+}
+
+/* glow animation */
+#champion-podium::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.4), transparent);
+  animation: rotateLight 6s linear infinite;
+}
+
+@keyframes rotateLight {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 20px gold;
+  }
+  to {
+    box-shadow: 0 0 40px orange;
+  }
+}
+
+#winner-name {
+  color: #fff;
+  font-weight: bold;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.group-locked {
+  opacity: 0.6;
+  pointer-events: none;
+}
+.hidden {
+  display: none !important;
+}
+
+.confetti {
+  position: fixed;
+  top: -10px;
+  width: 8px;
+  height: 8px;
+  animation: fall 5s linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh);
+  }
+}
+
+.group-card:hover {
+  box-shadow: 0 0 25px rgba(0, 212, 255, 0.5);
+}
+
+.winner-animate {
+  animation: winnerPop 0.6s ease;
+}
+
+@keyframes winnerPop {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0px transparent;
+  }
+  50% {
+    transform: scale(1.15);
+    box-shadow: 0 0 20px gold;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.promoted {
+  animation: slideIn 0.6s ease;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+/* Splash Screen */
+#splash-screen {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, #0b1d3a, #000);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+/* overlay light */
+.overlay {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.1), transparent);
+  animation: rotateLight 10s linear infinite;
+}
+
+/* content */
+.splash-content {
+  text-align: center;
+  z-index: 2;
+  animation: fadeIn 2s ease;
+}
+
+/* trophy */
+.trophy {
+  width: 130px;
+  animation:
+    float 2s ease-in-out infinite,
+    spin 6s linear infinite;
+  filter: drop-shadow(0 0 20px gold);
+}
+
+/* title */
+.title {
+  font-size: 3.5rem;
+  margin-top: 20px;
+  background: linear-gradient(90deg, gold, white);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glow 2s infinite alternate;
+}
+
+/* subtitle */
+.subtitle {
+  margin-top: 10px;
+  color: #ccc;
+  font-size: 1rem;
+}
+
+/* loading bar */
+.loading-bar {
+  width: 250px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  margin: 20px auto;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #00d4ff, #00ff88);
+  animation: load 3s forwards;
+}
+
+/* animations */
+@keyframes load {
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px gold;
+  }
+  to {
+    text-shadow: 0 0 25px orange;
+  }
+}
+
+@keyframes rotateLight {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* confetti canvas */
+#confetti {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Splash Screen */
+#splash-screen {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, #0b1d3a, #000);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+/* overlay light */
+.overlay {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.1), transparent);
+  animation: rotateLight 10s linear infinite;
+}
+
+/* content */
+.splash-content {
+  text-align: center;
+  z-index: 2;
+  animation: fadeIn 2s ease;
+}
+
+/* trophy */
+.trophy {
+  width: 130px;
+  animation:
+    float 2s ease-in-out infinite,
+    spin 6s linear infinite;
+  filter: drop-shadow(0 0 20px gold);
+}
+
+/* title */
+.title {
+  font-size: 3.5rem;
+  margin-top: 20px;
+  background: linear-gradient(90deg, gold, white);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glow 2s infinite alternate;
+}
+
+/* subtitle */
+.subtitle {
+  margin-top: 10px;
+  color: #ccc;
+  font-size: 1rem;
+}
+
+/* loading bar */
+.loading-bar {
+  width: 250px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  margin: 20px auto;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #00d4ff, #00ff88);
+  animation: load 3s forwards;
+}
+
+/* animations */
+@keyframes load {
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px gold;
+  }
+  to {
+    text-shadow: 0 0 25px orange;
+  }
+}
+
+@keyframes rotateLight {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* confetti canvas */
+#confetti {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+#winner-card {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(0, 0, 0, 0.6); /* تغميق خفيف */
+  z-index: 9999;
+}
+
+/* الصندوق */
+.winner-box {
+  background: linear-gradient(135deg, #ffd700, #ffae00);
+  padding: 40px 60px;
+  border-radius: 25px;
+  text-align: center;
+
+  box-shadow: 0 0 40px gold;
+  animation: popUp 0.8s ease;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+/* الكأس */
+.winner-trophy {
+  width: 120px;
+  animation: float 2s infinite;
+}
+
+/* الاسم + العلم */
+.winner-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+#winner-flag {
+  width: 40px;
+  border-radius: 5px;
+}
+
+#winner-name-big {
+  font-size: 2rem;
+  color: white;
+}
+
+/* button */
+.winner-box button {
+  margin-top: 15px;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 10px;
+  background: #333;
+  color: white;
+  cursor: pointer;
+}
+
+/* animation */
+@keyframes popUp {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+/* spotlight من فوق */
+.spotlight {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 500px;
+
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.4),
+    transparent 70%
+  );
+  filter: blur(20px);
+
+  animation: lightMove 3s infinite alternate;
+}
+
+/* حركة الإضاءة */
+@keyframes lightMove {
+  from {
+    transform: translateX(-50%) translateY(0);
+  }
+  to {
+    transform: translateX(-50%) translateY(30px);
+  }
+}

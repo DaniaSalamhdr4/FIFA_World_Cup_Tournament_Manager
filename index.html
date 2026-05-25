@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>World Cup 2026 Manager</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>🏆 World Cup 2026 - Tournament Manager</h1>
+      <p>United States, Canada, Mexico</p>
+    </header>
+
+    <main id="app">
+      <!-- Group Stage -->
+      <section id="group-stage-section">
+        <h2>Group Stage</h2>
+        <div id="groups-container" class="grid-container">
+          <!-- Groups will be generated here by JS -->
+        </div>
+        <button id="finish-group-btn" onclick="finishGroupStage()">
+          Finish Group Stage and Lock Results
+        </button>
+      </section>
+
+      <!-- Knockout Stage (will be hidden initially) -->
+      <section id="knockout-section" class="hidden">
+        <h2>Knockout Stage</h2>
+        <div id="knockout-bracket">
+          <!-- Matches will be generated here by JS -->
+        </div>
+      </section>
+      <div
+        id="champion-podium"
+        style="
+          display: none;
+          text-align: center;
+          margin-top: 50px;
+          padding: 40px;
+          background: linear-gradient(135deg, #ffd700, #ffae00);
+          border-radius: 20px;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        "
+      >
+        <h1 style="font-size: 3rem; margin-bottom: 10px">🏆 Winner 🏆</h1>
+        <h2
+          id="winner-name"
+          style="
+            font-size: 2.5rem;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+          "
+        ></h2>
+        <p style="font-size: 1.2rem; font-weight: bold">
+          Congratulations to the champion of the World Cup 2026!
+        </p>
+        <button
+          onclick="resetTournament()"
+          style="
+            margin-top: 20px;
+            padding: 10px 25px;
+            cursor: pointer;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+          "
+        >
+          Start New Tournament
+        </button>
+      </div>
+      <div id="splash-screen">
+        <div class="overlay"></div>
+
+        <div class="splash-content">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/861/861512.png"
+            class="trophy"
+          />
+
+          <h1 class="title">World Cup 2026</h1>
+
+          <div class="loading-bar">
+            <div class="progress"></div>
+          </div>
+
+          <p class="subtitle">Loading Tournament Experience...</p>
+        </div>
+
+        <canvas id="confetti"></canvas>
+      </div>
+
+      <!-- صوت (اختياري) -->
+    </main>
+    <div id="winner-card" class="hidden">
+      <div class="spotlight"></div>
+      <!-- إضاءة -->
+
+      <div class="winner-box">
+        <div class="sparkles"></div>
+        <!-- بريق -->
+
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/861/861512.png"
+          class="winner-trophy"
+        />
+
+        <h1>🏆 Champion 🏆</h1>
+
+        <div class="winner-info">
+          <img id="winner-flag" />
+          <h2 id="winner-name-big"></h2>
+        </div>
+
+        <button onclick="resetTournament()">Start New Tournament</button>
+      </div>
+    </div>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
