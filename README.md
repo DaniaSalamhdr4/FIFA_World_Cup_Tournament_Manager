@@ -18,7 +18,7 @@ The application allows users to:
 
 ---
 
-# 🚀 Technologies Used
+## 🚀 Technologies Used
 
 - HTML5
 - CSS3
@@ -27,7 +27,7 @@ The application allows users to:
 
 ---
 
-# 🎯 Project Goals
+## 🎯 Project Goals
 
 This project was created to practice:
 
@@ -40,7 +40,7 @@ This project was created to practice:
 
 ---
 
-# ⚙️ Core Features
+## ⚙️ Core Features
 
 ✅ Team and Tournament Management
 
@@ -58,7 +58,7 @@ This project was created to practice:
 
 ---
 
-# 🎨 UI / UX Design
+## 🎨 UI / UX Design
 
 The interface was designed with:
 
@@ -71,7 +71,7 @@ The design prioritizes readability, usability, and clean visual organization.
 
 ---
 
-# ▶️ How to Run
+## ▶️ How to Run
 
 1. Clone the repository
 
@@ -83,18 +83,10 @@ git clone https://github.com/DaniaSalamhdr4/FIFA_World_Cup_Tournament_Manager.gi
 
 3. Run `index.html` in your browser
 
----
-
-## 👥 Authors
-
-- **Dania Salama** - [DaniaSalamadr4](https://github.com/DaniaSalamhdr4)
-
 ## 🎥 Demo
 
 [Watch Demo](https://youtube.com/your-video-link)
 
-```
----
+## 👥 Authors
 
-
-```
+- **Dania Salama** - [DaniaSalamadr4](https://github.com/DaniaSalamhdr4)
