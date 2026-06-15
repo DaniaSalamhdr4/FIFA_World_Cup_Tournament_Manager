@@ -38,17 +38,17 @@ section {
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 غروبات بسطر */
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-  padding: 0 40px; /* 👈 حواف من الطرفين */
+  padding: 0 40px;
 }
 
 .group-card {
   background: var(--card-bg);
   backdrop-filter: blur(10px);
   border-radius: 16px;
-  padding: 15px; /* 👈 أصغر */
-  font-size: 0.9rem; /* 👈 تصغير عام */
+  padding: 15px;
+  font-size: 0.9rem;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   transition: 0.3s;
 }
@@ -71,7 +71,7 @@ th {
 }
 th:nth-child(1),
 td:nth-child(1) {
-  width: 60%; /* 👈 اسم الفريق */
+  width: 60%;
   text-align: left;
 }
 
@@ -79,7 +79,7 @@ th:nth-child(2),
 td:nth-child(2),
 th:nth-child(3),
 td:nth-child(3) {
-  width: 20%; /* 👈 Points + GD */
+  width: 20%;
   text-align: center;
 }
 
